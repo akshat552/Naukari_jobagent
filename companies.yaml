@@ -27,199 +27,201 @@ companies:
   - {ats: naukri, slug: nk-dotnet, query: "dot-net-developer", job_age: 1, experience: 3, name: "Naukri .NET Developer (3+ yrs)"}
   - {ats: naukri, slug: nk-csharp, query: "c-sharp-developer", job_age: 1, experience: 3, name: "Naukri C# Developer (3+ yrs)"}
   - {ats: naukri, slug: nk-fullstack, query: "full-stack-dot-net-developer", job_age: 1, experience: 3, name: "Naukri Full Stack .NET (3+ yrs)"}
+  - {ats: naukri, slug: nk-aspnetcore, query: "asp-net-core-developer", job_age: 1, experience: 3, name: "Naukri ASP.NET Core (3+ yrs)"}
+  - {ats: naukri, slug: nk-dotnetazure, query: "dot-net-azure-developer", job_age: 1, experience: 3, name: "Naukri .NET + Azure (3+ yrs)"}
 
   # ============================================================================
   # Target Companies (Specific Search Streams)
   # ============================================================================
-  - {ats: linkedin, slug: capgemini, query: "Capgemini .NET Developer", location: "India", name: "Capgemini"}
-  - {ats: linkedin, slug: deloitte, query: "Deloitte .NET Developer", location: "India", name: "Deloitte"}
-  - {ats: linkedin, slug: accenture, query: "Accenture .NET Developer", location: "India", name: "Accenture"}
-  - {ats: linkedin, slug: infosys, query: "Infosys .NET Developer", location: "India", name: "Infosys"}
-  - {ats: linkedin, slug: wipro, query: "Wipro .NET Developer", location: "India", name: "Wipro"}
-  - {ats: linkedin, slug: hcltech, query: "HCLTech .NET Developer", location: "India", name: "HCLTech"}
-  - {ats: linkedin, slug: tcs, query: "TCS .NET Developer", location: "India", name: "TCS"}
-  - {ats: linkedin, slug: techmahindra, query: "Tech Mahindra .NET Developer", location: "India", name: "Tech Mahindra"}
-  - {ats: linkedin, slug: ltimindtree, query: "LTIMindtree .NET Developer", location: "India", name: "LTIMindtree"}
-  - {ats: linkedin, slug: mphasis, query: "Mphasis .NET Developer", location: "India", name: "Mphasis"}
-  - {ats: linkedin, slug: persistentsystems, query: "Persistent Systems .NET Developer", location: "India", name: "Persistent Systems"}
-  - {ats: linkedin, slug: coforge, query: "Coforge .NET Developer", location: "India", name: "Coforge"}
-  - {ats: linkedin, slug: hexaware, query: "Hexaware .NET Developer", location: "India", name: "Hexaware"}
-  - {ats: linkedin, slug: birlasoft, query: "Birlasoft .NET Developer", location: "India", name: "Birlasoft"}
-  - {ats: linkedin, slug: virtusa, query: "Virtusa .NET Developer", location: "India", name: "Virtusa"}
-  - {ats: linkedin, slug: nttdata, query: "NTT DATA .NET Developer", location: "India", name: "NTT DATA"}
-  - {ats: linkedin, slug: dxctechnology, query: "DXC Technology .NET Developer", location: "India", name: "DXC Technology"}
-  - {ats: linkedin, slug: cgi, query: "CGI .NET Developer", location: "India", name: "CGI"}
-  - {ats: linkedin, slug: epamsystems, query: "EPAM Systems .NET Developer", location: "India", name: "EPAM Systems"}
-  - {ats: linkedin, slug: genpact, query: "Genpact .NET Developer", location: "India", name: "Genpact"}
-  - {ats: linkedin, slug: publicissapient, query: "Publicis Sapient .NET Developer", location: "India", name: "Publicis Sapient"}
-  - {ats: linkedin, slug: nagarro, query: "Nagarro .NET Developer", location: "India", name: "Nagarro"}
-  - {ats: linkedin, slug: soprasteria, query: "Sopra Steria .NET Developer", location: "India", name: "Sopra Steria"}
-  - {ats: linkedin, slug: synechron, query: "Synechron .NET Developer", location: "India", name: "Synechron"}
-  - {ats: linkedin, slug: zensartechnologies, query: "Zensar Technologies .NET Developer", location: "India", name: "Zensar Technologies"}
-  - {ats: linkedin, slug: sonatasoftware, query: "Sonata Software .NET Developer", location: "India", name: "Sonata Software"}
-  - {ats: linkedin, slug: yashtechnologies, query: "YASH Technologies .NET Developer", location: "India", name: "YASH Technologies"}
-  - {ats: linkedin, slug: irissoftware, query: "Iris Software .NET Developer", location: "India", name: "Iris Software"}
-  - {ats: linkedin, slug: questglobal, query: "Quest Global .NET Developer", location: "India", name: "Quest Global"}
-  - {ats: linkedin, slug: ust, query: "UST .NET Developer", location: "India", name: "UST"}
-  - {ats: linkedin, slug: mastek, query: "Mastek .NET Developer", location: "India", name: "Mastek"}
-  - {ats: linkedin, slug: brillio, query: "Brillio .NET Developer", location: "India", name: "Brillio"}
-  - {ats: linkedin, slug: 3pillarglobal, query: "3Pillar Global .NET Developer", location: "India", name: "3Pillar Global"}
-  - {ats: linkedin, slug: allata, query: "Allata .NET Developer", location: "India", name: "Allata"}
-  - {ats: linkedin, slug: ippontechnologies, query: "Ippon Technologies .NET Developer", location: "India", name: "Ippon Technologies"}
-  - {ats: linkedin, slug: computacenter, query: "Computacenter .NET Developer", location: "India", name: "Computacenter"}
-  - {ats: linkedin, slug: atos, query: "Atos .NET Developer", location: "India", name: "Atos"}
-  - {ats: linkedin, slug: microsoft, query: "Microsoft .NET Developer", location: "India", name: "Microsoft"}
-  - {ats: linkedin, slug: ibm, query: "IBM .NET Developer", location: "India", name: "IBM"}
-  - {ats: linkedin, slug: oracle, query: "Oracle .NET Developer", location: "India", name: "Oracle"}
-  - {ats: linkedin, slug: sap, query: "SAP .NET Developer", location: "India", name: "SAP"}
-  - {ats: linkedin, slug: salesforce, query: "Salesforce .NET Developer", location: "India", name: "Salesforce"}
-  - {ats: linkedin, slug: servicenow, query: "ServiceNow .NET Developer", location: "India", name: "ServiceNow"}
-  - {ats: linkedin, slug: adobe, query: "Adobe .NET Developer", location: "India", name: "Adobe"}
-  - {ats: linkedin, slug: broadcom, query: "Broadcom .NET Developer", location: "India", name: "Broadcom"}
-  - {ats: linkedin, slug: delltechnologies, query: "Dell Technologies .NET Developer", location: "India", name: "Dell Technologies"}
-  - {ats: linkedin, slug: hpe, query: "HPE .NET Developer", location: "India", name: "HPE"}
-  - {ats: linkedin, slug: cisco, query: "Cisco .NET Developer", location: "India", name: "Cisco"}
-  - {ats: linkedin, slug: redhat, query: "Red Hat .NET Developer", location: "India", name: "Red Hat"}
-  - {ats: linkedin, slug: siemens, query: "Siemens .NET Developer", location: "India", name: "Siemens"}
-  - {ats: linkedin, slug: schneiderelectric, query: "Schneider Electric .NET Developer", location: "India", name: "Schneider Electric"}
-  - {ats: linkedin, slug: honeywell, query: "Honeywell .NET Developer", location: "India", name: "Honeywell"}
-  - {ats: linkedin, slug: bosch, query: "Bosch .NET Developer", location: "India", name: "Bosch"}
-  - {ats: linkedin, slug: bgsw, query: "BGSW .NET Developer", location: "India", name: "BGSW"}
-  - {ats: linkedin, slug: continental, query: "Continental .NET Developer", location: "India", name: "Continental"}
-  - {ats: linkedin, slug: mercedesbenzrd, query: "Mercedes-Benz R&D .NET Developer", location: "India", name: "Mercedes-Benz R&D"}
-  - {ats: linkedin, slug: volkswagengroup, query: "Volkswagen Group .NET Developer", location: "India", name: "Volkswagen Group"}
-  - {ats: linkedin, slug: bmwtechworks, query: "BMW TechWorks .NET Developer", location: "India", name: "BMW TechWorks"}
-  - {ats: linkedin, slug: philips, query: "Philips .NET Developer", location: "India", name: "Philips"}
-  - {ats: linkedin, slug: ericsson, query: "Ericsson .NET Developer", location: "India", name: "Ericsson"}
-  - {ats: linkedin, slug: nokia, query: "Nokia .NET Developer", location: "India", name: "Nokia"}
-  - {ats: linkedin, slug: qualcomm, query: "Qualcomm .NET Developer", location: "India", name: "Qualcomm"}
-  - {ats: linkedin, slug: intel, query: "Intel .NET Developer", location: "India", name: "Intel"}
-  - {ats: linkedin, slug: samsung, query: "Samsung .NET Developer", location: "India", name: "Samsung"}
-  - {ats: linkedin, slug: paypal, query: "PayPal .NET Developer", location: "India", name: "PayPal"}
-  - {ats: linkedin, slug: visa, query: "Visa .NET Developer", location: "India", name: "Visa"}
-  - {ats: linkedin, slug: mastercard, query: "Mastercard .NET Developer", location: "India", name: "Mastercard"}
-  - {ats: linkedin, slug: americanexpress, query: "American Express .NET Developer", location: "India", name: "American Express"}
-  - {ats: linkedin, slug: jpmorganchase, query: "JPMorgan Chase .NET Developer", location: "India", name: "JPMorgan Chase"}
-  - {ats: linkedin, slug: goldmansachs, query: "Goldman Sachs .NET Developer", location: "India", name: "Goldman Sachs"}
-  - {ats: linkedin, slug: morganstanley, query: "Morgan Stanley .NET Developer", location: "India", name: "Morgan Stanley"}
-  - {ats: linkedin, slug: wellsfargo, query: "Wells Fargo .NET Developer", location: "India", name: "Wells Fargo"}
-  - {ats: linkedin, slug: citi, query: "Citi .NET Developer", location: "India", name: "Citi"}
-  - {ats: linkedin, slug: barclays, query: "Barclays .NET Developer", location: "India", name: "Barclays"}
-  - {ats: linkedin, slug: hsbc, query: "HSBC .NET Developer", location: "India", name: "HSBC"}
-  - {ats: linkedin, slug: standardchartered, query: "Standard Chartered .NET Developer", location: "India", name: "Standard Chartered"}
-  - {ats: linkedin, slug: zoho, query: "Zoho .NET Developer", location: "India", name: "Zoho"}
-  - {ats: linkedin, slug: freshworks, query: "Freshworks .NET Developer", location: "India", name: "Freshworks"}
-  - {ats: linkedin, slug: chargebee, query: "Chargebee .NET Developer", location: "India", name: "Chargebee"}
-  - {ats: linkedin, slug: postman, query: "Postman .NET Developer", location: "India", name: "Postman"}
-  - {ats: linkedin, slug: browserstack, query: "BrowserStack .NET Developer", location: "India", name: "BrowserStack"}
-  - {ats: linkedin, slug: highradius, query: "HighRadius .NET Developer", location: "India", name: "HighRadius"}
-  - {ats: linkedin, slug: razorpay, query: "Razorpay .NET Developer", location: "India", name: "Razorpay"}
-  - {ats: linkedin, slug: phonepe, query: "PhonePe .NET Developer", location: "India", name: "PhonePe"}
-  - {ats: linkedin, slug: cred, query: "CRED .NET Developer", location: "India", name: "CRED"}
-  - {ats: linkedin, slug: meesho, query: "Meesho .NET Developer", location: "India", name: "Meesho"}
-  - {ats: linkedin, slug: swiggy, query: "Swiggy .NET Developer", location: "India", name: "Swiggy"}
-  - {ats: linkedin, slug: zomato, query: "Zomato .NET Developer", location: "India", name: "Zomato"}
-  - {ats: linkedin, slug: groww, query: "Groww .NET Developer", location: "India", name: "Groww"}
-  - {ats: linkedin, slug: credgenics, query: "Credgenics .NET Developer", location: "India", name: "Credgenics"}
-  - {ats: linkedin, slug: paytm, query: "Paytm .NET Developer", location: "India", name: "Paytm"}
-  - {ats: linkedin, slug: dream11, query: "Dream11 .NET Developer", location: "India", name: "Dream11"}
-  - {ats: linkedin, slug: zerodha, query: "Zerodha .NET Developer", location: "India", name: "Zerodha"}
-  - {ats: linkedin, slug: juspay, query: "Juspay .NET Developer", location: "India", name: "Juspay"}
-  - {ats: linkedin, slug: pinelabs, query: "Pine Labs .NET Developer", location: "India", name: "Pine Labs"}
-  - {ats: linkedin, slug: ofbusiness, query: "OfBusiness .NET Developer", location: "India", name: "OfBusiness"}
-  - {ats: linkedin, slug: udaan, query: "Udaan .NET Developer", location: "India", name: "Udaan"}
-  - {ats: linkedin, slug: moglix, query: "Moglix .NET Developer", location: "India", name: "Moglix"}
-  - {ats: linkedin, slug: delhivery, query: "Delhivery .NET Developer", location: "India", name: "Delhivery"}
-  - {ats: linkedin, slug: policybazaar, query: "Policybazaar .NET Developer", location: "India", name: "Policybazaar"}
-  - {ats: linkedin, slug: infoedge, query: "Info Edge .NET Developer", location: "India", name: "Info Edge"}
-  - {ats: linkedin, slug: makemytrip, query: "MakeMyTrip .NET Developer", location: "India", name: "MakeMyTrip"}
-  - {ats: linkedin, slug: nykaa, query: "Nykaa .NET Developer", location: "India", name: "Nykaa"}
-  - {ats: linkedin, slug: uniphore, query: "Uniphore .NET Developer", location: "India", name: "Uniphore"}
-  - {ats: linkedin, slug: darwinbox, query: "Darwinbox .NET Developer", location: "India", name: "Darwinbox"}
-  - {ats: linkedin, slug: whatfix, query: "Whatfix .NET Developer", location: "India", name: "Whatfix"}
-  - {ats: linkedin, slug: leadsquared, query: "LeadSquared .NET Developer", location: "India", name: "LeadSquared"}
-  - {ats: linkedin, slug: kissflow, query: "Kissflow .NET Developer", location: "India", name: "Kissflow"}
-  - {ats: linkedin, slug: wingify, query: "Wingify .NET Developer", location: "India", name: "Wingify"}
-  - {ats: linkedin, slug: druva, query: "Druva .NET Developer", location: "India", name: "Druva"}
-  - {ats: linkedin, slug: gupshup, query: "Gupshup .NET Developer", location: "India", name: "Gupshup"}
-  - {ats: linkedin, slug: inmobi, query: "InMobi .NET Developer", location: "India", name: "InMobi"}
-  - {ats: linkedin, slug: databricks, query: "Databricks .NET Developer", location: "India", name: "Databricks"}
-  - {ats: linkedin, slug: cloudflare, query: "Cloudflare .NET Developer", location: "India", name: "Cloudflare"}
-  - {ats: linkedin, slug: mongodb, query: "MongoDB .NET Developer", location: "India", name: "MongoDB"}
-  - {ats: linkedin, slug: okta, query: "Okta .NET Developer", location: "India", name: "Okta"}
-  - {ats: linkedin, slug: twilio, query: "Twilio .NET Developer", location: "India", name: "Twilio"}
-  - {ats: linkedin, slug: stripe, query: "Stripe .NET Developer", location: "India", name: "Stripe"}
-  - {ats: linkedin, slug: gitlab, query: "GitLab .NET Developer", location: "India", name: "GitLab"}
-  - {ats: linkedin, slug: datadog, query: "Datadog .NET Developer", location: "India", name: "Datadog"}
-  - {ats: linkedin, slug: elastic, query: "Elastic .NET Developer", location: "India", name: "Elastic"}
-  - {ats: linkedin, slug: hashicorp, query: "HashiCorp .NET Developer", location: "India", name: "HashiCorp"}
-  - {ats: linkedin, slug: reddit, query: "Reddit .NET Developer", location: "India", name: "Reddit"}
-  - {ats: linkedin, slug: airbnb, query: "Airbnb .NET Developer", location: "India", name: "Airbnb"}
-  - {ats: linkedin, slug: pinterest, query: "Pinterest .NET Developer", location: "India", name: "Pinterest"}
-  - {ats: linkedin, slug: canva, query: "Canva .NET Developer", location: "India", name: "Canva"}
-  - {ats: linkedin, slug: coinbase, query: "Coinbase .NET Developer", location: "India", name: "Coinbase"}
-  - {ats: linkedin, slug: robinhood, query: "Robinhood .NET Developer", location: "India", name: "Robinhood"}
-  - {ats: linkedin, slug: brex, query: "Brex .NET Developer", location: "India", name: "Brex"}
-  - {ats: linkedin, slug: plaid, query: "Plaid .NET Developer", location: "India", name: "Plaid"}
-  - {ats: linkedin, slug: affirm, query: "Affirm .NET Developer", location: "India", name: "Affirm"}
-  - {ats: linkedin, slug: rippling, query: "Rippling .NET Developer", location: "India", name: "Rippling"}
-  - {ats: linkedin, slug: gusto, query: "Gusto .NET Developer", location: "India", name: "Gusto"}
-  - {ats: linkedin, slug: zapier, query: "Zapier .NET Developer", location: "India", name: "Zapier"}
-  - {ats: linkedin, slug: asana, query: "Asana .NET Developer", location: "India", name: "Asana"}
-  - {ats: linkedin, slug: intercom, query: "Intercom .NET Developer", location: "India", name: "Intercom"}
-  - {ats: linkedin, slug: webflow, query: "Webflow .NET Developer", location: "India", name: "Webflow"}
-  - {ats: linkedin, slug: circleci, query: "CircleCI .NET Developer", location: "India", name: "CircleCI"}
-  - {ats: linkedin, slug: launchdarkly, query: "LaunchDarkly .NET Developer", location: "India", name: "LaunchDarkly"}
-  - {ats: linkedin, slug: amplitude, query: "Amplitude .NET Developer", location: "India", name: "Amplitude"}
-  - {ats: linkedin, slug: mixpanel, query: "Mixpanel .NET Developer", location: "India", name: "Mixpanel"}
-  - {ats: linkedin, slug: pagerduty, query: "PagerDuty .NET Developer", location: "India", name: "PagerDuty"}
-  - {ats: linkedin, slug: newrelic, query: "New Relic .NET Developer", location: "India", name: "New Relic"}
-  - {ats: linkedin, slug: auth0, query: "Auth0 .NET Developer", location: "India", name: "Auth0"}
-  - {ats: linkedin, slug: 1password, query: "1Password .NET Developer", location: "India", name: "1Password"}
-  - {ats: linkedin, slug: snyk, query: "Snyk .NET Developer", location: "India", name: "Snyk"}
-  - {ats: linkedin, slug: cockroachlabs, query: "Cockroach Labs .NET Developer", location: "India", name: "Cockroach Labs"}
-  - {ats: linkedin, slug: confluent, query: "Confluent .NET Developer", location: "India", name: "Confluent"}
-  - {ats: linkedin, slug: dbtlabs, query: "dbt Labs .NET Developer", location: "India", name: "dbt Labs"}
-  - {ats: linkedin, slug: fivetran, query: "Fivetran .NET Developer", location: "India", name: "Fivetran"}
-  - {ats: linkedin, slug: snowflake, query: "Snowflake .NET Developer", location: "India", name: "Snowflake"}
-  - {ats: linkedin, slug: segment, query: "Segment .NET Developer", location: "India", name: "Segment"}
-  - {ats: linkedin, slug: deel, query: "Deel .NET Developer", location: "India", name: "Deel"}
-  - {ats: linkedin, slug: checkoutcom, query: "Checkout.com .NET Developer", location: "India", name: "Checkout.com"}
-  - {ats: linkedin, slug: xero, query: "Xero .NET Developer", location: "India", name: "Xero"}
-  - {ats: linkedin, slug: uipath, query: "UiPath .NET Developer", location: "India", name: "UiPath"}
-  - {ats: linkedin, slug: hubspot, query: "HubSpot .NET Developer", location: "India", name: "HubSpot"}
-  - {ats: linkedin, slug: knowbe4, query: "KnowBe4 .NET Developer", location: "India", name: "KnowBe4"}
-  - {ats: linkedin, slug: weaviate, query: "Weaviate .NET Developer", location: "India", name: "Weaviate"}
-  - {ats: linkedin, slug: anyscale, query: "Anyscale .NET Developer", location: "India", name: "Anyscale"}
-  - {ats: linkedin, slug: notion, query: "Notion .NET Developer", location: "India", name: "Notion"}
-  - {ats: linkedin, slug: levelai, query: "Level AI .NET Developer", location: "India", name: "Level AI"}
-  - {ats: linkedin, slug: sarvamai, query: "Sarvam AI .NET Developer", location: "India", name: "Sarvam AI"}
-  - {ats: linkedin, slug: tekion, query: "Tekion .NET Developer", location: "India", name: "Tekion"}
-  - {ats: linkedin, slug: delinea, query: "Delinea .NET Developer", location: "India", name: "Delinea"}
-  - {ats: linkedin, slug: teamdynamix, query: "TeamDynamix .NET Developer", location: "India", name: "TeamDynamix"}
-  - {ats: linkedin, slug: certa, query: "Certa .NET Developer", location: "India", name: "Certa"}
-  - {ats: linkedin, slug: openai, query: "OpenAI .NET Developer", location: "India", name: "OpenAI"}
-  - {ats: linkedin, slug: google, query: "Google .NET Developer", location: "India", name: "Google"}
-  - {ats: linkedin, slug: googledeepmind, query: "Google DeepMind .NET Developer", location: "India", name: "Google DeepMind"}
-  - {ats: linkedin, slug: amazon, query: "Amazon .NET Developer", location: "India", name: "Amazon"}
-  - {ats: linkedin, slug: aws, query: "AWS .NET Developer", location: "India", name: "AWS"}
-  - {ats: linkedin, slug: nvidia, query: "NVIDIA .NET Developer", location: "India", name: "NVIDIA"}
-  - {ats: linkedin, slug: anthropic, query: "Anthropic .NET Developer", location: "India", name: "Anthropic"}
-  - {ats: linkedin, slug: cohere, query: "Cohere .NET Developer", location: "India", name: "Cohere"}
-  - {ats: linkedin, slug: huggingface, query: "Hugging Face .NET Developer", location: "India", name: "Hugging Face"}
-  - {ats: linkedin, slug: scaleai, query: "Scale AI .NET Developer", location: "India", name: "Scale AI"}
-  - {ats: linkedin, slug: glean, query: "Glean .NET Developer", location: "India", name: "Glean"}
-  - {ats: linkedin, slug: perplexity, query: "Perplexity .NET Developer", location: "India", name: "Perplexity"}
-  - {ats: linkedin, slug: mistralai, query: "Mistral AI .NET Developer", location: "India", name: "Mistral AI"}
-  - {ats: linkedin, slug: krutrim, query: "Krutrim .NET Developer", location: "India", name: "Krutrim"}
-  - {ats: linkedin, slug: yellowai, query: "Yellow.ai .NET Developer", location: "India", name: "Yellow.ai"}
-  - {ats: linkedin, slug: koreai, query: "Kore.ai .NET Developer", location: "India", name: "Kore.ai"}
-  - {ats: linkedin, slug: observeai, query: "Observe.AI .NET Developer", location: "India", name: "Observe.AI"}
-  - {ats: linkedin, slug: fractalanalytics, query: "Fractal Analytics .NET Developer", location: "India", name: "Fractal Analytics"}
-  - {ats: linkedin, slug: tigeranalytics, query: "Tiger Analytics .NET Developer", location: "India", name: "Tiger Analytics"}
-  - {ats: linkedin, slug: tredence, query: "Tredence .NET Developer", location: "India", name: "Tredence"}
-  - {ats: linkedin, slug: sigmoid, query: "Sigmoid .NET Developer", location: "India", name: "Sigmoid"}
-  - {ats: linkedin, slug: quantiphi, query: "Quantiphi .NET Developer", location: "India", name: "Quantiphi"}
-  - {ats: linkedin, slug: gramener, query: "Gramener .NET Developer", location: "India", name: "Gramener"}
-  - {ats: linkedin, slug: course5intelligence, query: "Course5 Intelligence .NET Developer", location: "India", name: "Course5 Intelligence"}
-  - {ats: linkedin, slug: latentviewanalytics, query: "LatentView Analytics .NET Developer", location: "India", name: "LatentView Analytics"}
+  # - {ats: linkedin, slug: capgemini, query: "Capgemini .NET Developer", location: "India", name: "Capgemini"}
+  # - {ats: linkedin, slug: deloitte, query: "Deloitte .NET Developer", location: "India", name: "Deloitte"}
+  # - {ats: linkedin, slug: accenture, query: "Accenture .NET Developer", location: "India", name: "Accenture"}
+  # - {ats: linkedin, slug: infosys, query: "Infosys .NET Developer", location: "India", name: "Infosys"}
+  # - {ats: linkedin, slug: wipro, query: "Wipro .NET Developer", location: "India", name: "Wipro"}
+  # - {ats: linkedin, slug: hcltech, query: "HCLTech .NET Developer", location: "India", name: "HCLTech"}
+  # - {ats: linkedin, slug: tcs, query: "TCS .NET Developer", location: "India", name: "TCS"}
+  # - {ats: linkedin, slug: techmahindra, query: "Tech Mahindra .NET Developer", location: "India", name: "Tech Mahindra"}
+  # - {ats: linkedin, slug: ltimindtree, query: "LTIMindtree .NET Developer", location: "India", name: "LTIMindtree"}
+  # - {ats: linkedin, slug: mphasis, query: "Mphasis .NET Developer", location: "India", name: "Mphasis"}
+  # - {ats: linkedin, slug: persistentsystems, query: "Persistent Systems .NET Developer", location: "India", name: "Persistent Systems"}
+  # - {ats: linkedin, slug: coforge, query: "Coforge .NET Developer", location: "India", name: "Coforge"}
+  # - {ats: linkedin, slug: hexaware, query: "Hexaware .NET Developer", location: "India", name: "Hexaware"}
+  # - {ats: linkedin, slug: birlasoft, query: "Birlasoft .NET Developer", location: "India", name: "Birlasoft"}
+  # - {ats: linkedin, slug: virtusa, query: "Virtusa .NET Developer", location: "India", name: "Virtusa"}
+  # - {ats: linkedin, slug: nttdata, query: "NTT DATA .NET Developer", location: "India", name: "NTT DATA"}
+  # - {ats: linkedin, slug: dxctechnology, query: "DXC Technology .NET Developer", location: "India", name: "DXC Technology"}
+  # - {ats: linkedin, slug: cgi, query: "CGI .NET Developer", location: "India", name: "CGI"}
+  # - {ats: linkedin, slug: epamsystems, query: "EPAM Systems .NET Developer", location: "India", name: "EPAM Systems"}
+  # - {ats: linkedin, slug: genpact, query: "Genpact .NET Developer", location: "India", name: "Genpact"}
+  # - {ats: linkedin, slug: publicissapient, query: "Publicis Sapient .NET Developer", location: "India", name: "Publicis Sapient"}
+  # - {ats: linkedin, slug: nagarro, query: "Nagarro .NET Developer", location: "India", name: "Nagarro"}
+  # - {ats: linkedin, slug: soprasteria, query: "Sopra Steria .NET Developer", location: "India", name: "Sopra Steria"}
+  # - {ats: linkedin, slug: synechron, query: "Synechron .NET Developer", location: "India", name: "Synechron"}
+  # - {ats: linkedin, slug: zensartechnologies, query: "Zensar Technologies .NET Developer", location: "India", name: "Zensar Technologies"}
+  # - {ats: linkedin, slug: sonatasoftware, query: "Sonata Software .NET Developer", location: "India", name: "Sonata Software"}
+  # - {ats: linkedin, slug: yashtechnologies, query: "YASH Technologies .NET Developer", location: "India", name: "YASH Technologies"}
+  # - {ats: linkedin, slug: irissoftware, query: "Iris Software .NET Developer", location: "India", name: "Iris Software"}
+  # - {ats: linkedin, slug: questglobal, query: "Quest Global .NET Developer", location: "India", name: "Quest Global"}
+  # - {ats: linkedin, slug: ust, query: "UST .NET Developer", location: "India", name: "UST"}
+  # - {ats: linkedin, slug: mastek, query: "Mastek .NET Developer", location: "India", name: "Mastek"}
+  # - {ats: linkedin, slug: brillio, query: "Brillio .NET Developer", location: "India", name: "Brillio"}
+  # - {ats: linkedin, slug: 3pillarglobal, query: "3Pillar Global .NET Developer", location: "India", name: "3Pillar Global"}
+  # - {ats: linkedin, slug: allata, query: "Allata .NET Developer", location: "India", name: "Allata"}
+  # - {ats: linkedin, slug: ippontechnologies, query: "Ippon Technologies .NET Developer", location: "India", name: "Ippon Technologies"}
+  # - {ats: linkedin, slug: computacenter, query: "Computacenter .NET Developer", location: "India", name: "Computacenter"}
+  # - {ats: linkedin, slug: atos, query: "Atos .NET Developer", location: "India", name: "Atos"}
+  # - {ats: linkedin, slug: microsoft, query: "Microsoft .NET Developer", location: "India", name: "Microsoft"}
+  # - {ats: linkedin, slug: ibm, query: "IBM .NET Developer", location: "India", name: "IBM"}
+  # - {ats: linkedin, slug: oracle, query: "Oracle .NET Developer", location: "India", name: "Oracle"}
+  # - {ats: linkedin, slug: sap, query: "SAP .NET Developer", location: "India", name: "SAP"}
+  # - {ats: linkedin, slug: salesforce, query: "Salesforce .NET Developer", location: "India", name: "Salesforce"}
+  # - {ats: linkedin, slug: servicenow, query: "ServiceNow .NET Developer", location: "India", name: "ServiceNow"}
+  # - {ats: linkedin, slug: adobe, query: "Adobe .NET Developer", location: "India", name: "Adobe"}
+  # - {ats: linkedin, slug: broadcom, query: "Broadcom .NET Developer", location: "India", name: "Broadcom"}
+  # - {ats: linkedin, slug: delltechnologies, query: "Dell Technologies .NET Developer", location: "India", name: "Dell Technologies"}
+  # - {ats: linkedin, slug: hpe, query: "HPE .NET Developer", location: "India", name: "HPE"}
+  # - {ats: linkedin, slug: cisco, query: "Cisco .NET Developer", location: "India", name: "Cisco"}
+  # - {ats: linkedin, slug: redhat, query: "Red Hat .NET Developer", location: "India", name: "Red Hat"}
+  # - {ats: linkedin, slug: siemens, query: "Siemens .NET Developer", location: "India", name: "Siemens"}
+  # - {ats: linkedin, slug: schneiderelectric, query: "Schneider Electric .NET Developer", location: "India", name: "Schneider Electric"}
+  # - {ats: linkedin, slug: honeywell, query: "Honeywell .NET Developer", location: "India", name: "Honeywell"}
+  # - {ats: linkedin, slug: bosch, query: "Bosch .NET Developer", location: "India", name: "Bosch"}
+  # - {ats: linkedin, slug: bgsw, query: "BGSW .NET Developer", location: "India", name: "BGSW"}
+  # - {ats: linkedin, slug: continental, query: "Continental .NET Developer", location: "India", name: "Continental"}
+  # - {ats: linkedin, slug: mercedesbenzrd, query: "Mercedes-Benz R&D .NET Developer", location: "India", name: "Mercedes-Benz R&D"}
+  # - {ats: linkedin, slug: volkswagengroup, query: "Volkswagen Group .NET Developer", location: "India", name: "Volkswagen Group"}
+  # - {ats: linkedin, slug: bmwtechworks, query: "BMW TechWorks .NET Developer", location: "India", name: "BMW TechWorks"}
+  # - {ats: linkedin, slug: philips, query: "Philips .NET Developer", location: "India", name: "Philips"}
+  # - {ats: linkedin, slug: ericsson, query: "Ericsson .NET Developer", location: "India", name: "Ericsson"}
+  # - {ats: linkedin, slug: nokia, query: "Nokia .NET Developer", location: "India", name: "Nokia"}
+  # - {ats: linkedin, slug: qualcomm, query: "Qualcomm .NET Developer", location: "India", name: "Qualcomm"}
+  # - {ats: linkedin, slug: intel, query: "Intel .NET Developer", location: "India", name: "Intel"}
+  # - {ats: linkedin, slug: samsung, query: "Samsung .NET Developer", location: "India", name: "Samsung"}
+  # - {ats: linkedin, slug: paypal, query: "PayPal .NET Developer", location: "India", name: "PayPal"}
+  # - {ats: linkedin, slug: visa, query: "Visa .NET Developer", location: "India", name: "Visa"}
+  # - {ats: linkedin, slug: mastercard, query: "Mastercard .NET Developer", location: "India", name: "Mastercard"}
+  # - {ats: linkedin, slug: americanexpress, query: "American Express .NET Developer", location: "India", name: "American Express"}
+  # - {ats: linkedin, slug: jpmorganchase, query: "JPMorgan Chase .NET Developer", location: "India", name: "JPMorgan Chase"}
+  # - {ats: linkedin, slug: goldmansachs, query: "Goldman Sachs .NET Developer", location: "India", name: "Goldman Sachs"}
+  # - {ats: linkedin, slug: morganstanley, query: "Morgan Stanley .NET Developer", location: "India", name: "Morgan Stanley"}
+  # - {ats: linkedin, slug: wellsfargo, query: "Wells Fargo .NET Developer", location: "India", name: "Wells Fargo"}
+  # - {ats: linkedin, slug: citi, query: "Citi .NET Developer", location: "India", name: "Citi"}
+  # - {ats: linkedin, slug: barclays, query: "Barclays .NET Developer", location: "India", name: "Barclays"}
+  # - {ats: linkedin, slug: hsbc, query: "HSBC .NET Developer", location: "India", name: "HSBC"}
+  # - {ats: linkedin, slug: standardchartered, query: "Standard Chartered .NET Developer", location: "India", name: "Standard Chartered"}
+  # - {ats: linkedin, slug: zoho, query: "Zoho .NET Developer", location: "India", name: "Zoho"}
+  # - {ats: linkedin, slug: freshworks, query: "Freshworks .NET Developer", location: "India", name: "Freshworks"}
+  # - {ats: linkedin, slug: chargebee, query: "Chargebee .NET Developer", location: "India", name: "Chargebee"}
+  # - {ats: linkedin, slug: postman, query: "Postman .NET Developer", location: "India", name: "Postman"}
+  # - {ats: linkedin, slug: browserstack, query: "BrowserStack .NET Developer", location: "India", name: "BrowserStack"}
+  # - {ats: linkedin, slug: highradius, query: "HighRadius .NET Developer", location: "India", name: "HighRadius"}
+  # - {ats: linkedin, slug: razorpay, query: "Razorpay .NET Developer", location: "India", name: "Razorpay"}
+  # - {ats: linkedin, slug: phonepe, query: "PhonePe .NET Developer", location: "India", name: "PhonePe"}
+  # - {ats: linkedin, slug: cred, query: "CRED .NET Developer", location: "India", name: "CRED"}
+  # - {ats: linkedin, slug: meesho, query: "Meesho .NET Developer", location: "India", name: "Meesho"}
+  # - {ats: linkedin, slug: swiggy, query: "Swiggy .NET Developer", location: "India", name: "Swiggy"}
+  # - {ats: linkedin, slug: zomato, query: "Zomato .NET Developer", location: "India", name: "Zomato"}
+  # - {ats: linkedin, slug: groww, query: "Groww .NET Developer", location: "India", name: "Groww"}
+  # - {ats: linkedin, slug: credgenics, query: "Credgenics .NET Developer", location: "India", name: "Credgenics"}
+  # - {ats: linkedin, slug: paytm, query: "Paytm .NET Developer", location: "India", name: "Paytm"}
+  # - {ats: linkedin, slug: dream11, query: "Dream11 .NET Developer", location: "India", name: "Dream11"}
+  # - {ats: linkedin, slug: zerodha, query: "Zerodha .NET Developer", location: "India", name: "Zerodha"}
+  # - {ats: linkedin, slug: juspay, query: "Juspay .NET Developer", location: "India", name: "Juspay"}
+  # - {ats: linkedin, slug: pinelabs, query: "Pine Labs .NET Developer", location: "India", name: "Pine Labs"}
+  # - {ats: linkedin, slug: ofbusiness, query: "OfBusiness .NET Developer", location: "India", name: "OfBusiness"}
+  # - {ats: linkedin, slug: udaan, query: "Udaan .NET Developer", location: "India", name: "Udaan"}
+  # - {ats: linkedin, slug: moglix, query: "Moglix .NET Developer", location: "India", name: "Moglix"}
+  # - {ats: linkedin, slug: delhivery, query: "Delhivery .NET Developer", location: "India", name: "Delhivery"}
+  # - {ats: linkedin, slug: policybazaar, query: "Policybazaar .NET Developer", location: "India", name: "Policybazaar"}
+  # - {ats: linkedin, slug: infoedge, query: "Info Edge .NET Developer", location: "India", name: "Info Edge"}
+  # - {ats: linkedin, slug: makemytrip, query: "MakeMyTrip .NET Developer", location: "India", name: "MakeMyTrip"}
+  # - {ats: linkedin, slug: nykaa, query: "Nykaa .NET Developer", location: "India", name: "Nykaa"}
+  # - {ats: linkedin, slug: uniphore, query: "Uniphore .NET Developer", location: "India", name: "Uniphore"}
+  # - {ats: linkedin, slug: darwinbox, query: "Darwinbox .NET Developer", location: "India", name: "Darwinbox"}
+  # - {ats: linkedin, slug: whatfix, query: "Whatfix .NET Developer", location: "India", name: "Whatfix"}
+  # - {ats: linkedin, slug: leadsquared, query: "LeadSquared .NET Developer", location: "India", name: "LeadSquared"}
+  # - {ats: linkedin, slug: kissflow, query: "Kissflow .NET Developer", location: "India", name: "Kissflow"}
+  # - {ats: linkedin, slug: wingify, query: "Wingify .NET Developer", location: "India", name: "Wingify"}
+  # - {ats: linkedin, slug: druva, query: "Druva .NET Developer", location: "India", name: "Druva"}
+  # - {ats: linkedin, slug: gupshup, query: "Gupshup .NET Developer", location: "India", name: "Gupshup"}
+  # - {ats: linkedin, slug: inmobi, query: "InMobi .NET Developer", location: "India", name: "InMobi"}
+  # - {ats: linkedin, slug: databricks, query: "Databricks .NET Developer", location: "India", name: "Databricks"}
+  # - {ats: linkedin, slug: cloudflare, query: "Cloudflare .NET Developer", location: "India", name: "Cloudflare"}
+  # - {ats: linkedin, slug: mongodb, query: "MongoDB .NET Developer", location: "India", name: "MongoDB"}
+  # - {ats: linkedin, slug: okta, query: "Okta .NET Developer", location: "India", name: "Okta"}
+  # - {ats: linkedin, slug: twilio, query: "Twilio .NET Developer", location: "India", name: "Twilio"}
+  # - {ats: linkedin, slug: stripe, query: "Stripe .NET Developer", location: "India", name: "Stripe"}
+  # - {ats: linkedin, slug: gitlab, query: "GitLab .NET Developer", location: "India", name: "GitLab"}
+  # - {ats: linkedin, slug: datadog, query: "Datadog .NET Developer", location: "India", name: "Datadog"}
+  # - {ats: linkedin, slug: elastic, query: "Elastic .NET Developer", location: "India", name: "Elastic"}
+  # - {ats: linkedin, slug: hashicorp, query: "HashiCorp .NET Developer", location: "India", name: "HashiCorp"}
+  # - {ats: linkedin, slug: reddit, query: "Reddit .NET Developer", location: "India", name: "Reddit"}
+  # - {ats: linkedin, slug: airbnb, query: "Airbnb .NET Developer", location: "India", name: "Airbnb"}
+  # - {ats: linkedin, slug: pinterest, query: "Pinterest .NET Developer", location: "India", name: "Pinterest"}
+  # - {ats: linkedin, slug: canva, query: "Canva .NET Developer", location: "India", name: "Canva"}
+  # - {ats: linkedin, slug: coinbase, query: "Coinbase .NET Developer", location: "India", name: "Coinbase"}
+  # - {ats: linkedin, slug: robinhood, query: "Robinhood .NET Developer", location: "India", name: "Robinhood"}
+  # - {ats: linkedin, slug: brex, query: "Brex .NET Developer", location: "India", name: "Brex"}
+  # - {ats: linkedin, slug: plaid, query: "Plaid .NET Developer", location: "India", name: "Plaid"}
+  # - {ats: linkedin, slug: affirm, query: "Affirm .NET Developer", location: "India", name: "Affirm"}
+  # - {ats: linkedin, slug: rippling, query: "Rippling .NET Developer", location: "India", name: "Rippling"}
+  # - {ats: linkedin, slug: gusto, query: "Gusto .NET Developer", location: "India", name: "Gusto"}
+  # - {ats: linkedin, slug: zapier, query: "Zapier .NET Developer", location: "India", name: "Zapier"}
+  # - {ats: linkedin, slug: asana, query: "Asana .NET Developer", location: "India", name: "Asana"}
+  # - {ats: linkedin, slug: intercom, query: "Intercom .NET Developer", location: "India", name: "Intercom"}
+  # - {ats: linkedin, slug: webflow, query: "Webflow .NET Developer", location: "India", name: "Webflow"}
+  # - {ats: linkedin, slug: circleci, query: "CircleCI .NET Developer", location: "India", name: "CircleCI"}
+  # - {ats: linkedin, slug: launchdarkly, query: "LaunchDarkly .NET Developer", location: "India", name: "LaunchDarkly"}
+  # - {ats: linkedin, slug: amplitude, query: "Amplitude .NET Developer", location: "India", name: "Amplitude"}
+  # - {ats: linkedin, slug: mixpanel, query: "Mixpanel .NET Developer", location: "India", name: "Mixpanel"}
+  # - {ats: linkedin, slug: pagerduty, query: "PagerDuty .NET Developer", location: "India", name: "PagerDuty"}
+  # - {ats: linkedin, slug: newrelic, query: "New Relic .NET Developer", location: "India", name: "New Relic"}
+  # - {ats: linkedin, slug: auth0, query: "Auth0 .NET Developer", location: "India", name: "Auth0"}
+  # - {ats: linkedin, slug: 1password, query: "1Password .NET Developer", location: "India", name: "1Password"}
+  # - {ats: linkedin, slug: snyk, query: "Snyk .NET Developer", location: "India", name: "Snyk"}
+  # - {ats: linkedin, slug: cockroachlabs, query: "Cockroach Labs .NET Developer", location: "India", name: "Cockroach Labs"}
+  # - {ats: linkedin, slug: confluent, query: "Confluent .NET Developer", location: "India", name: "Confluent"}
+  # - {ats: linkedin, slug: dbtlabs, query: "dbt Labs .NET Developer", location: "India", name: "dbt Labs"}
+  # - {ats: linkedin, slug: fivetran, query: "Fivetran .NET Developer", location: "India", name: "Fivetran"}
+  # - {ats: linkedin, slug: snowflake, query: "Snowflake .NET Developer", location: "India", name: "Snowflake"}
+  # - {ats: linkedin, slug: segment, query: "Segment .NET Developer", location: "India", name: "Segment"}
+  # - {ats: linkedin, slug: deel, query: "Deel .NET Developer", location: "India", name: "Deel"}
+  # - {ats: linkedin, slug: checkoutcom, query: "Checkout.com .NET Developer", location: "India", name: "Checkout.com"}
+  # - {ats: linkedin, slug: xero, query: "Xero .NET Developer", location: "India", name: "Xero"}
+  # - {ats: linkedin, slug: uipath, query: "UiPath .NET Developer", location: "India", name: "UiPath"}
+  # - {ats: linkedin, slug: hubspot, query: "HubSpot .NET Developer", location: "India", name: "HubSpot"}
+  # - {ats: linkedin, slug: knowbe4, query: "KnowBe4 .NET Developer", location: "India", name: "KnowBe4"}
+  # - {ats: linkedin, slug: weaviate, query: "Weaviate .NET Developer", location: "India", name: "Weaviate"}
+  # - {ats: linkedin, slug: anyscale, query: "Anyscale .NET Developer", location: "India", name: "Anyscale"}
+  # - {ats: linkedin, slug: notion, query: "Notion .NET Developer", location: "India", name: "Notion"}
+  # - {ats: linkedin, slug: levelai, query: "Level AI .NET Developer", location: "India", name: "Level AI"}
+  # - {ats: linkedin, slug: sarvamai, query: "Sarvam AI .NET Developer", location: "India", name: "Sarvam AI"}
+  # - {ats: linkedin, slug: tekion, query: "Tekion .NET Developer", location: "India", name: "Tekion"}
+  # - {ats: linkedin, slug: delinea, query: "Delinea .NET Developer", location: "India", name: "Delinea"}
+  # - {ats: linkedin, slug: teamdynamix, query: "TeamDynamix .NET Developer", location: "India", name: "TeamDynamix"}
+  # - {ats: linkedin, slug: certa, query: "Certa .NET Developer", location: "India", name: "Certa"}
+  # - {ats: linkedin, slug: openai, query: "OpenAI .NET Developer", location: "India", name: "OpenAI"}
+  # - {ats: linkedin, slug: google, query: "Google .NET Developer", location: "India", name: "Google"}
+  # - {ats: linkedin, slug: googledeepmind, query: "Google DeepMind .NET Developer", location: "India", name: "Google DeepMind"}
+  # - {ats: linkedin, slug: amazon, query: "Amazon .NET Developer", location: "India", name: "Amazon"}
+  # - {ats: linkedin, slug: aws, query: "AWS .NET Developer", location: "India", name: "AWS"}
+  # - {ats: linkedin, slug: nvidia, query: "NVIDIA .NET Developer", location: "India", name: "NVIDIA"}
+  # - {ats: linkedin, slug: anthropic, query: "Anthropic .NET Developer", location: "India", name: "Anthropic"}
+  # - {ats: linkedin, slug: cohere, query: "Cohere .NET Developer", location: "India", name: "Cohere"}
+  # - {ats: linkedin, slug: huggingface, query: "Hugging Face .NET Developer", location: "India", name: "Hugging Face"}
+  # - {ats: linkedin, slug: scaleai, query: "Scale AI .NET Developer", location: "India", name: "Scale AI"}
+  # - {ats: linkedin, slug: glean, query: "Glean .NET Developer", location: "India", name: "Glean"}
+  # - {ats: linkedin, slug: perplexity, query: "Perplexity .NET Developer", location: "India", name: "Perplexity"}
+  # - {ats: linkedin, slug: mistralai, query: "Mistral AI .NET Developer", location: "India", name: "Mistral AI"}
+  # - {ats: linkedin, slug: krutrim, query: "Krutrim .NET Developer", location: "India", name: "Krutrim"}
+  # - {ats: linkedin, slug: yellowai, query: "Yellow.ai .NET Developer", location: "India", name: "Yellow.ai"}
+  # - {ats: linkedin, slug: koreai, query: "Kore.ai .NET Developer", location: "India", name: "Kore.ai"}
+  # - {ats: linkedin, slug: observeai, query: "Observe.AI .NET Developer", location: "India", name: "Observe.AI"}
+  # - {ats: linkedin, slug: fractalanalytics, query: "Fractal Analytics .NET Developer", location: "India", name: "Fractal Analytics"}
+  # - {ats: linkedin, slug: tigeranalytics, query: "Tiger Analytics .NET Developer", location: "India", name: "Tiger Analytics"}
+  # - {ats: linkedin, slug: tredence, query: "Tredence .NET Developer", location: "India", name: "Tredence"}
+  # - {ats: linkedin, slug: sigmoid, query: "Sigmoid .NET Developer", location: "India", name: "Sigmoid"}
+  # - {ats: linkedin, slug: quantiphi, query: "Quantiphi .NET Developer", location: "India", name: "Quantiphi"}
+  # - {ats: linkedin, slug: gramener, query: "Gramener .NET Developer", location: "India", name: "Gramener"}
+  # - {ats: linkedin, slug: course5intelligence, query: "Course5 Intelligence .NET Developer", location: "India", name: "Course5 Intelligence"}
+  # - {ats: linkedin, slug: latentviewanalytics, query: "LatentView Analytics .NET Developer", location: "India", name: "LatentView Analytics"}
