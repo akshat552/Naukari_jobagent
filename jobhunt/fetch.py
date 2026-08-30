@@ -504,17 +504,33 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             location = kwargs.get("location") or "India"
             use_cdp = kwargs.get("cdp", False) or (ats == "linkedin_cdp")
             port = kwargs.get("port") or 9222
+            pages = int(kwargs.get("pages") or 3)
             if use_cdp:
                 return fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
 
             encoded_q = requests.utils.quote(query)
             encoded_loc = requests.utils.quote(location)
-            url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r86400&sortBy=DD&start=0"
-            r = sess.get(url, headers={**UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=TIMEOUT)
-            if r.status_code == 200:
-                jobs = parse_linkedin(slug, comp_name, r.text)
-                if jobs:
-                    return jobs
+            all_jobs = []
+            seen_ids = set()
+            for p in range(pages):
+                start = p * 10
+                url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r86400&sortBy=DD&start={start}"
+                r = sess.get(url, headers={**UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=TIMEOUT)
+                if r.status_code == 200:
+                    page_jobs = parse_linkedin(slug, comp_name, r.text)
+                    if not page_jobs:
+                        break
+                    for pj in page_jobs:
+                        if pj.job_id not in seen_ids:
+                            seen_ids.add(pj.job_id)
+                            all_jobs.append(pj)
+                else:
+                    break
+                if p < pages - 1:
+                    time.sleep(0.3)
+
+            if all_jobs:
+                return all_jobs
             # Automatic CDP fallback if guest endpoint returned no results
             return fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
 
