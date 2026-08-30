@@ -453,7 +453,7 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
             for pg in range(pages):
                 # Scroll down the left pane to load all 25 jobs for the current page
                 try:
-                    pane = page.query_selector('.jobs-search-results-list')
+                    pane = page.query_selector('.jobs-search-results-list, .scaffold-layout__list')
                     if pane:
                         for _ in range(8):
                             pane.evaluate('el => el.scrollTop = el.scrollHeight')
