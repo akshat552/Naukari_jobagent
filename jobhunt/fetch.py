@@ -544,7 +544,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             use_cdp_only = kwargs.get("cdp", False) or (ats == "linkedin_cdp")
             double_check = kwargs.get("double_check", True)
             port = kwargs.get("port") or 9222
-            pages = int(kwargs.get("pages") or 5)
+            pages = int(kwargs.get("pages") or 10)
 
             if use_cdp_only:
                 cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
@@ -557,7 +557,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             http_count = 0
             cdp_count = 0
 
-            # 1. Fast HTTP API Check (up to 3 pages)
+            # 1. Fast HTTP API Check
             for p in range(pages):
                 start = p * 10
                 url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r86400&sortBy=DD&start={start}"
