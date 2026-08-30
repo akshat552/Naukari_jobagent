@@ -15,7 +15,7 @@ import yaml
 
 from . import digest as digest_mod
 from . import llm, mailer
-from .fetch import fetch_all
+from .fetch import fetch_all, enrich_job_description
 from .mock import fetch_all_mock
 from .prefilter import prefilter
 from .providers import LLMError, resolve
@@ -171,6 +171,8 @@ def cmd_run(args) -> int:
         try:
             provider, model = resolve("draft")
             print(f"  via {provider.name}/{model}")
+            for sj in shortlist:
+                enrich_job_description(sj)
             llm.draft(shortlist, profile,
                       jd_chars=int(cfg.get("draft_jd_chars", 6000)),
                       provider=provider, model=model)

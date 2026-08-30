@@ -51,6 +51,27 @@ class Job:
         return asdict(self)
 
 
+def enrich_job_description(job: Job, session: requests.Session | None = None) -> Job:
+    """Enrich job with full JD text on-demand for shortlisted roles."""
+    if len(job.description) > 500:
+        return job
+    sess = session or requests
+    if job.ats == "linkedin":
+        m = re.search(r'(\d{8,})', job.url) or re.search(r'(\d{8,})', job.job_id)
+        if m:
+            job_num = m.group(1)
+            try:
+                r = sess.get(f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_num}",
+                             headers={**UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=TIMEOUT)
+                if r.status_code == 200 and r.text:
+                    full_desc = strip_html(r.text)
+                    if len(full_desc) > len(job.description):
+                        job.description = full_desc
+            except Exception:
+                pass
+    return job
+
+
 # --------------------------------------------------------------------------
 # Adapters. Each takes the raw JSON body and returns list[Job].
 # Keeping parse separate from HTTP is what makes offline testing possible.

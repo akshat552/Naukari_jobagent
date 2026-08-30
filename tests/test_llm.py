@@ -214,6 +214,8 @@ def test_draft_kit_has_every_key_the_digest_renders():
         "fit_summary": "Two sentences about fit.",
         "tailored_bullets": ["Cut p99 by 70%", "Migrated 40 services"],
         "gaps": ["No Rust in production"],
+        "ats_keywords": ["Go", "Kubernetes", "gRPC", "Docker", "PostgreSQL"],
+        "recruiter_dm": "Hi recruiter, excited to share my backend expertise.",
         "cover_note": "A plain 130-word note.",
         "questions_to_ask": ["How is on-call split?", "What is the deploy cadence?"],
     }) + "\n```"])
@@ -225,6 +227,8 @@ def test_draft_kit_has_every_key_the_digest_renders():
     assert kit["fit_summary"].startswith("Two sentences")
     assert len(kit["tailored_bullets"]) == 2
     assert isinstance(kit["gaps"], list)
+    assert len(kit["ats_keywords"]) == 5
+    assert kit["recruiter_dm"].startswith("Hi recruiter")
 
 
 def test_draft_fills_missing_keys_rather_than_crashing_the_digest():

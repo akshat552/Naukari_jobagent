@@ -22,6 +22,28 @@ def _badge(score: float | None) -> str:
             f'padding:3px 9px;border-radius:999px;font-size:13px;">{s:.1f}</span>')
 
 
+def _urgency_badge(applicants: int | None) -> str:
+    if applicants is None:
+        return ""
+    if applicants <= 25:
+        return ('<span style="background:#238636;color:#ffffff;font-size:11px;font-weight:700;'
+                'padding:3px 8px;border-radius:6px;margin-left:8px;">🔥 Early Applicant (&lt;25)</span>')
+    if applicants <= 50:
+        return ('<span style="background:#1f6feb;color:#ffffff;font-size:11px;font-weight:700;'
+                'padding:3px 8px;border-radius:6px;margin-left:8px;">⚡ Fast Apply (&lt;50)</span>')
+    return ""
+
+
+def _keyword_chips(keywords: list[str]) -> str:
+    if not keywords:
+        return ""
+    chips = "".join(
+        f'<span style="display:inline-block;background:#1e222d;border:1px solid #30363d;'
+        f'color:#79c0ff;font-size:12px;padding:3px 8px;border-radius:6px;margin:3px 5px 3px 0;'
+        f'font-weight:600;">{html.escape(str(k))}</span>' for k in keywords)
+    return f'<div style="margin-top:6px;">{chips}</div>'
+
+
 def _bullets(items: list[str]) -> str:
     if not items:
         return ""
@@ -46,10 +68,21 @@ def _card(j: Job) -> str:
     para = lambda t: (f'<p style="margin:8px 0 0 0;color:{TEXT};font-size:14px;'
                       f'line-height:1.6;">{html.escape(t)}</p>') if t else ""
 
+    recruiter_dm = d.get("recruiter_dm")
+    recruiter_html = ""
+    if recruiter_dm:
+        recruiter_html = _section("💬 LinkedIn Recruiter / Hiring Manager Outreach (Copy & Send)",
+            f'<div style="margin-top:8px;padding:12px;background:#0d1117;'
+            f'border:1px solid #1f6feb;border-radius:8px;color:{TEXT};font-size:13px;'
+            f'line-height:1.5;white-space:pre-wrap;">{html.escape(recruiter_dm)}</div>')
+
+    ats_keywords = d.get("ats_keywords") or []
+    ats_html = _section("🎯 Key ATS Keywords for Resume", _keyword_chips(ats_keywords)) if ats_keywords else ""
+
     cover = d.get("cover_note")
     cover_html = ""
     if cover:
-        cover_html = _section("Cover note (edit before sending)",
+        cover_html = _section("✉️ Cover note (edit before sending)",
             f'<div style="margin-top:8px;padding:12px;background:#0d1017;'
             f'border:1px solid {LINE};border-radius:8px;color:{TEXT};font-size:14px;'
             f'line-height:1.6;white-space:pre-wrap;">{html.escape(cover)}</div>')
@@ -57,14 +90,20 @@ def _card(j: Job) -> str:
     return f"""
 <div style="background:{CARD};border:1px solid {LINE};border-radius:12px;padding:18px;margin-bottom:14px;">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-    <div style="font-size:17px;font-weight:700;color:{TEXT};">{html.escape(j.title)}</div>
+    <div>
+      <div style="font-size:17px;font-weight:700;color:{TEXT};">{html.escape(j.title)}</div>
+      <div style="color:{MUTED};font-size:13px;margin-top:5px;">
+        {html.escape(meta)} {_urgency_badge(j.applicants)}
+      </div>
+    </div>
     <div style="padding-left:12px;">{_badge(j.score)}</div>
   </div>
-  <div style="color:{MUTED};font-size:13px;margin-top:5px;">{html.escape(meta)}</div>
   {para(j.reason or "")}
   {_section("Why it fits", para(d.get("fit_summary", "")))}
+  {ats_html}
   {_section("Resume bullets for this role", _bullets(d.get("tailored_bullets", [])))}
   {_section("Honest gaps", _bullets(d.get("gaps", [])))}
+  {recruiter_html}
   {cover_html}
   {_section("Ask them", _bullets(d.get("questions_to_ask", [])))}
   <div style="margin-top:16px;">

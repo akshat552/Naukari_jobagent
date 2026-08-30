@@ -22,7 +22,7 @@ from .providers import LLMError, Provider, resolve
 _FENCE_OPEN = re.compile(r"^\s*```(?:json|JSON)?\s*", re.M)
 _FENCE_CLOSE = re.compile(r"\s*```\s*$", re.M)
 
-DRAFT_KEYS = ("fit_summary", "tailored_bullets", "gaps", "cover_note", "questions_to_ask")
+DRAFT_KEYS = ("fit_summary", "tailored_bullets", "gaps", "cover_note", "questions_to_ask", "recruiter_dm", "ats_keywords")
 
 # Output ceilings per stage. These are deliberately generous: reasoning models
 # (Gemini 2.5+, and anything with thinking on) spend output tokens before the
@@ -248,6 +248,8 @@ Return ONLY a JSON object, no prose:
                                // using only real experience from the profile,
                                // each with a concrete artefact or number
   "gaps": [str],               // 1-3 honest gaps, each with how to address it
+  "ats_keywords": [str],       // 5-8 load-bearing technical & domain keywords from the JD to include in the resume
+  "recruiter_dm": str,         // 40-60 word high-conversion direct message for LinkedIn to the technical recruiter/hiring manager
   "cover_note": str,           // 120-160 words. Plain. No "I am writing to
                                // express my interest", no "I am excited to",
                                // no flattery about the company's mission.
@@ -280,13 +282,15 @@ def draft(jobs: list[Job], profile: dict, jd_chars: int = 6000,
                 "fit_summary": str(kit.get("fit_summary") or ""),
                 "tailored_bullets": [str(b) for b in (kit.get("tailored_bullets") or [])],
                 "gaps": [str(g) for g in (kit.get("gaps") or [])],
+                "ats_keywords": [str(k) for k in (kit.get("ats_keywords") or [])],
+                "recruiter_dm": str(kit.get("recruiter_dm") or ""),
                 "cover_note": str(kit.get("cover_note") or ""),
                 "questions_to_ask": [str(q) for q in (kit.get("questions_to_ask") or [])],
             }
             print(f"  drafted {j.title} @ {j.company}")
         except (LLMError, ValueError, KeyError, TypeError) as e:
             print(f"  ! draft failed for {j.job_id} ({type(e).__name__}: {e})")
-            j.draft = {k: ("" if k in ("fit_summary", "cover_note") else []) for k in DRAFT_KEYS}
+            j.draft = {k: ("" if k in ("fit_summary", "cover_note", "recruiter_dm") else []) for k in DRAFT_KEYS}
 
         time.sleep(1.0)
 
