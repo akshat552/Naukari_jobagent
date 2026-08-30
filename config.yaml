@@ -21,11 +21,11 @@ filters:
     - '\b(dotnet|\.net|c#)\b.*\b(ai|genai|llm|rag)\b.*\b(engineer|developer)\b'
     - '\b(ai|genai|llm|rag)\b.*\b(dotnet|\.net|c#)\b.*\b(engineer|developer)\b'
 
-    # GenAI / LLM / RAG standalone engineering roles
-    - '\b(ai|artificial intelligence)\b.*\b(engineer|developer)\b'
-    - '\b(genai|generative ai)\b.*\b(engineer|developer)\b'
-    - '\b(llm|rag|agentic ai)\b.*\b(engineer|developer)\b'
-    - '\b(engineer|developer)\b.*\b(genai|generative ai|llm|rag)\b'
+    # # GenAI / LLM / RAG standalone engineering roles
+    # - '\b(ai|artificial intelligence)\b.*\b(engineer|developer)\b'
+    # - '\b(genai|generative ai)\b.*\b(engineer|developer)\b'
+    # - '\b(llm|rag|agentic ai)\b.*\b(engineer|developer)\b'
+    # - '\b(engineer|developer)\b.*\b(genai|generative ai|llm|rag)\b'
 
     # Full-stack roles
     - '\bfull[\s-]?stack\b.*\b(engineer|developer)\b'
