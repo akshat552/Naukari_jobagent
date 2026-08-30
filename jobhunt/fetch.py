@@ -529,12 +529,15 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             pages = int(kwargs.get("pages") or 3)
 
             if use_cdp_only:
-                return fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                return cdp_jobs, f"linkedin-cdp: {len(cdp_jobs)}"
 
             encoded_q = requests.utils.quote(query)
             encoded_loc = requests.utils.quote(location)
             all_jobs = []
             seen_ids = set()
+            http_count = 0
+            cdp_count = 0
 
             # 1. Fast HTTP API Check (up to 3 pages)
             for p in range(pages):
@@ -546,6 +549,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
                     if not page_jobs:
                         break
                     for pj in page_jobs:
+                        http_count += 1
                         if pj.job_id not in seen_ids:
                             seen_ids.add(pj.job_id)
                             all_jobs.append(pj)
@@ -557,37 +561,40 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             # 2. Playwright CDP Browser Check (double-check & merge anything unique)
             if double_check or not all_jobs:
                 cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                cdp_count = len(cdp_jobs)
                 for cj in cdp_jobs:
                     if cj.job_id not in seen_ids:
                         seen_ids.add(cj.job_id)
                         all_jobs.append(cj)
 
-            return all_jobs
+            detail = f"linkedin [http: {http_count}, cdp: {cdp_count} -> unique: {len(all_jobs)}]"
+            return all_jobs, detail
 
         elif ats in ("naukri", "naukri_cdp"):
             query = kwargs.get("query") or "dot-net-developer"
             job_age = kwargs.get("job_age") or 1
             experience = kwargs.get("experience") or 3
             port = kwargs.get("port") or 9222
-            return fetch_naukri_cdp(query=query, job_age=job_age, experience=experience, port=port)
+            naukri_jobs = fetch_naukri_cdp(query=query, job_age=job_age, experience=experience, port=port)
+            return naukri_jobs, "naukri-cdp"
 
         elif ats in ("custom", "direct"):
             endpoint_url = kwargs.get("endpoint_url") or kwargs.get("url")
             if not endpoint_url:
-                return []
+                return [], ats
             r = sess.get(endpoint_url, headers=UA, timeout=TIMEOUT)
             if r.status_code != 200:
                 print(f"  ! {ats}/{slug} -> HTTP {r.status_code}")
-                return []
-            return []
+                return [], ats
+            return [], ats
 
         else:
             print(f"  ! unknown ATS: {ats} for {comp_name}")
-            return []
+            return [], ats
 
     except Exception as e:  # dead slug, rate limit, network blip
         print(f"  ! {ats}/{slug} -> {type(e).__name__}: {e}")
-        return []
+        return [], ats
 
 
 def fetch_all(companies: Iterable[dict], sleep: float = 0.25) -> list[Job]:
@@ -598,8 +605,12 @@ def fetch_all(companies: Iterable[dict], sleep: float = 0.25) -> list[Job]:
         slug = c.get("slug", "")
         name = c.get("name") or slug
         extra = {k: v for k, v in c.items() if k not in ("ats", "slug", "name")}
-        got = fetch_board(ats, slug, name, session=session, **extra)
-        print(f"  {name:<28} {len(got):>4} jobs  ({ats})")
+        res = fetch_board(ats, slug, name, session=session, **extra)
+        if isinstance(res, tuple) and len(res) == 2:
+            got, detail = res
+        else:
+            got, detail = res, ats
+        print(f"  {name:<28} {len(got):>4} jobs  ({detail})")
         jobs.extend(got)
         per_board_sleep = 1.0 if ats == "linkedin" else sleep
         time.sleep(per_board_sleep)
