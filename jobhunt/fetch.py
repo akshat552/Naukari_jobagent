@@ -419,7 +419,7 @@ def fetch_naukri_cdp(query: str = "dot-net-developer", job_age: int = 1, experie
     return jobs
 
 
-def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str = "India", port: int = 9222) -> list[Job]:
+def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str = "India", port: int = 9222, pages: int = 5) -> list[Job]:
     """Scrape LinkedIn job listings using authentic Chrome session via Playwright CDP."""
     try:
         from playwright.sync_api import sync_playwright
@@ -430,6 +430,7 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
     ensure_chrome_running(port)
 
     jobs = []
+    seen_ids = set()
     try:
         with sync_playwright() as p:
             try:
@@ -449,60 +450,92 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
             page.goto(url, wait_until="domcontentloaded", timeout=25000)
             time.sleep(3)
 
-            cards = page.query_selector_all(".base-card, .job-search-card, .jobs-search__results-list li, div[data-entity-urn], div.job-card-container")
-            for card in cards:
-                title_el = card.query_selector(".base-search-card__title, h3, a.job-card-list__title, a.job-card-container__link strong, a.job-card-list__title strong")
-                if not title_el:
-                    continue
-                title = title_el.inner_text().strip()
+            for pg in range(pages):
+                # Scroll down the left pane to load all 25 jobs for the current page
+                try:
+                    pane = page.query_selector('.jobs-search-results-list')
+                    if pane:
+                        for _ in range(8):
+                            pane.evaluate('el => el.scrollTop = el.scrollHeight')
+                            page.wait_for_timeout(500)
+                except Exception:
+                    pass
 
-                link_el = card.query_selector("a.base-card__full-link, a.job-card-list__title, a[href*='/jobs/view/'], a.job-card-container__link")
-                raw_url = link_el.get_attribute("href") if link_el else ""
-                clean_url = raw_url.split("?")[0] if raw_url else ""
+                cards = page.query_selector_all(".base-card, .job-search-card, .jobs-search__results-list li, div[data-entity-urn], div.job-card-container")
+                for card in cards:
+                    title_el = card.query_selector(".base-search-card__title, h3, a.job-card-list__title, a.job-card-container__link strong, a.job-card-list__title strong")
+                    if not title_el:
+                        continue
+                    title = title_el.inner_text().strip()
 
-                comp_el = card.query_selector(".base-search-card__subtitle, .job-card-container__company-name, h4")
-                comp = comp_el.inner_text().strip() if comp_el else company
+                    link_el = card.query_selector("a.base-card__full-link, a.job-card-list__title, a[href*='/jobs/view/'], a.job-card-container__link")
+                    raw_url = link_el.get_attribute("href") if link_el else ""
+                    clean_url = raw_url.split("?")[0] if raw_url else ""
 
-                loc_el = card.query_selector(".job-search-card__location, .job-card-container__metadata-item")
-                loc = loc_el.inner_text().strip() if loc_el else location
+                    comp_el = card.query_selector(".base-search-card__subtitle, .job-card-container__company-name, h4")
+                    comp = comp_el.inner_text().strip() if comp_el else company
 
-                # Parse relative date
-                time_el = card.query_selector("time")
-                posted_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-                if time_el:
-                    time_text = time_el.inner_text().lower()
-                    if "day" in time_text:
-                        days_m = re.findall(r'\d+', time_text)
-                        days = int(days_m[0]) if days_m else 1
-                        posted_at = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
-                    elif "week" in time_text:
-                        weeks_m = re.findall(r'\d+', time_text)
-                        weeks = int(weeks_m[0]) if weeks_m else 1
-                        posted_at = (datetime.now(timezone.utc) - timedelta(days=weeks * 7)).strftime("%Y-%m-%d")
+                    loc_el = card.query_selector(".job-search-card__location, .job-card-container__metadata-item")
+                    loc = loc_el.inner_text().strip() if loc_el else location
 
-                # Parse applicant count
-                card_text = card.inner_text()
-                app_m = re.search(r'(\d+)\s+applicant|Over\s+(\d+)\s+applicant|Under\s+(\d+)\s+applicant', card_text, flags=re.I)
-                applicants = None
-                if app_m:
-                    digits = [int(g) for g in app_m.groups() if g and g.isdigit()]
-                    if digits:
-                        applicants = digits[0]
+                    # Parse relative date
+                    time_el = card.query_selector("time")
+                    posted_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                    if time_el:
+                        time_text = time_el.inner_text().lower()
+                        if "day" in time_text:
+                            days_m = re.findall(r'\d+', time_text)
+                            days = int(days_m[0]) if days_m else 1
+                            posted_at = (datetime.now(timezone.utc) - timedelta(days=days)).strftime("%Y-%m-%d")
+                        elif "week" in time_text:
+                            weeks_m = re.findall(r'\d+', time_text)
+                            weeks = int(weeks_m[0]) if weeks_m else 1
+                            posted_at = (datetime.now(timezone.utc) - timedelta(days=weeks * 7)).strftime("%Y-%m-%d")
 
-                job_id_m = re.search(r'(\d{8,})', clean_url)
-                job_id_val = job_id_m.group(1) if job_id_m else str(abs(hash(clean_url or title)))
+                    # Parse applicant count
+                    card_text = card.inner_text()
+                    app_m = re.search(r'(\d+)\s+applicant|Over\s+(\d+)\s+applicant|Under\s+(\d+)\s+applicant', card_text, flags=re.I)
+                    applicants = None
+                    if app_m:
+                        digits = [int(g) for g in app_m.groups() if g and g.isdigit()]
+                        if digits:
+                            applicants = digits[0]
 
-                jobs.append(Job(
-                    job_id=f"linkedin:{slug}:{job_id_val}",
-                    ats="linkedin",
-                    company=comp,
-                    title=title,
-                    location=loc,
-                    url=clean_url,
-                    description=f"{title} at {comp} ({loc})",
-                    posted_at=posted_at,
-                    applicants=applicants,
-                ))
+                    job_id_m = re.search(r'(\d{8,})', clean_url)
+                    job_id_val = job_id_m.group(1) if job_id_m else str(abs(hash(clean_url or title)))
+                    
+                    full_id = f"linkedin:{slug}:{job_id_val}"
+                    if full_id not in seen_ids:
+                        seen_ids.add(full_id)
+                        jobs.append(Job(
+                            job_id=full_id,
+                            ats="linkedin",
+                            company=comp,
+                            title=title,
+                            location=loc,
+                            url=clean_url,
+                            description=f"{title} at {comp} ({loc})",
+                            posted_at=posted_at,
+                            applicants=applicants,
+                        ))
+                
+                # Try clicking next page if there are more pages requested
+                if pg < pages - 1:
+                    try:
+                        pagination = page.query_selector_all('ul.artdeco-pagination__pages li button')
+                        if pagination:
+                            # click the next page button explicitly based on index
+                            target_page_num = pg + 2
+                            btn = page.query_selector(f"ul.artdeco-pagination__pages li button[aria-label*='Page {target_page_num}']")
+                            if btn:
+                                btn.click()
+                                page.wait_for_timeout(2500)
+                            else:
+                                break
+                        else:
+                            break
+                    except Exception:
+                        break
             page.close()
     except Exception as e:
         print(f"  ! linkedin/{slug} -> CDP fetch failed ({type(e).__name__}: {e})")
@@ -547,7 +580,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             pages = int(kwargs.get("pages") or 10)
 
             if use_cdp_only:
-                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port, pages=pages)
                 return cdp_jobs, f"linkedin-cdp: {len(cdp_jobs)}"
 
             encoded_q = requests.utils.quote(query)
@@ -578,7 +611,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
 
             # 2. Playwright CDP Browser Check (double-check & merge anything unique)
             if double_check or not all_jobs:
-                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port, pages=pages)
                 cdp_count = len(cdp_jobs)
                 for cj in cdp_jobs:
                     if cj.job_id not in seen_ids:
