@@ -11,6 +11,18 @@ from typing import Any, Iterable
 import requests
 
 UA = {"User-Agent": "jobhunt/1.0 (personal job search agent)"}
+
+# Global mapping of city name → LinkedIn geoId (provided by user)
+_geo_map = {
+    "bangalore": "105214831",
+    "noida": "102713980",
+    "gurugram": "115884833",
+    "hypertension": "105556991",
+    "hyderabad": "105556991",
+    "bhubaneswar": "102782588",
+    "indore": "101389470",
+    "pune": "110308773",
+}
 TIMEOUT = 20
 
 _TAG = re.compile(r"<[^>]+>")
@@ -444,8 +456,13 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
 
             search_query = query or f"{company} developer"
             encoded_q = requests.utils.quote(search_query)
-            encoded_loc = requests.utils.quote(location)
-            url = f"https://www.linkedin.com/jobs/search/?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD"
+            # Using global _geo_map defined at top of file
+            _geo_id = _geo_map.get(location.lower())
+            if _geo_id:
+                url = f"https://www.linkedin.com/jobs/search/?keywords={encoded_q}&geoId={_geo_id}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD"
+            else:
+                encoded_loc = requests.utils.quote(location)
+                url = f"https://www.linkedin.com/jobs/search/?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD"
 
             page.goto(url, wait_until="domcontentloaded", timeout=25000)
             time.sleep(3)
@@ -593,7 +610,12 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             # 1. Fast HTTP API Check
             for p in range(pages):
                 start = p * 10
-                url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD&start={start}"
+                # Use same geoId mapping logic as above for the HTTP API endpoint
+                _geo_id = _geo_map.get(location.lower())
+                if _geo_id:
+                    url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&geoId={_geo_id}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD&start={start}"
+                else:
+                    url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD&start={start}"
                 r = sess.get(url, headers={**UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=TIMEOUT)
                 if r.status_code == 200:
                     page_jobs = parse_linkedin(slug, comp_name, r.text)
