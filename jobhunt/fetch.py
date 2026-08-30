@@ -451,12 +451,12 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
 
             cards = page.query_selector_all(".base-card, .job-search-card, .jobs-search__results-list li, div[data-entity-urn], div.job-card-container")
             for card in cards:
-                title_el = card.query_selector(".base-search-card__title, h3, a.job-card-list__title")
+                title_el = card.query_selector(".base-search-card__title, h3, a.job-card-list__title, a.job-card-container__link strong, a.job-card-list__title strong")
                 if not title_el:
                     continue
                 title = title_el.inner_text().strip()
 
-                link_el = card.query_selector("a.base-card__full-link, a.job-card-list__title, a[href*='/jobs/view/']")
+                link_el = card.query_selector("a.base-card__full-link, a.job-card-list__title, a[href*='/jobs/view/'], a.job-card-container__link")
                 raw_url = link_el.get_attribute("href") if link_el else ""
                 clean_url = raw_url.split("?")[0] if raw_url else ""
 
