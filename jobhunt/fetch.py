@@ -520,19 +520,23 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
                 return []
             return parse_workday(slug, comp_name, r.json(), base_host=host, site=site)
 
-        elif ats in ("linkedin", "linkedin_cdp"):
+        elif ats in ("linkedin", "linkedin_cdp", "linkedin_both"):
             query = kwargs.get("query") or f"{comp_name} developer"
             location = kwargs.get("location") or "India"
-            use_cdp = kwargs.get("cdp", False) or (ats == "linkedin_cdp")
+            use_cdp_only = kwargs.get("cdp", False) or (ats == "linkedin_cdp")
+            double_check = kwargs.get("double_check", True)
             port = kwargs.get("port") or 9222
             pages = int(kwargs.get("pages") or 3)
-            if use_cdp:
+
+            if use_cdp_only:
                 return fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
 
             encoded_q = requests.utils.quote(query)
             encoded_loc = requests.utils.quote(location)
             all_jobs = []
             seen_ids = set()
+
+            # 1. Fast HTTP API Check (up to 3 pages)
             for p in range(pages):
                 start = p * 10
                 url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r86400&sortBy=DD&start={start}"
@@ -550,10 +554,15 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
                 if p < pages - 1:
                     time.sleep(0.3)
 
-            if all_jobs:
-                return all_jobs
-            # Automatic CDP fallback if guest endpoint returned no results
-            return fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+            # 2. Playwright CDP Browser Check (double-check & merge anything unique)
+            if double_check or not all_jobs:
+                cdp_jobs = fetch_linkedin_cdp(slug=slug, company=comp_name, query=query, location=location, port=port)
+                for cj in cdp_jobs:
+                    if cj.job_id not in seen_ids:
+                        seen_ids.add(cj.job_id)
+                        all_jobs.append(cj)
+
+            return all_jobs
 
         elif ats in ("naukri", "naukri_cdp"):
             query = kwargs.get("query") or "dot-net-developer"
