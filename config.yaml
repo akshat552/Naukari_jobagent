@@ -1,0 +1,88 @@
+filters:
+
+  include_titles:
+    - '\b(software|backend|back-end|server|platform|infrastructure|infra|systems|distributed|cloud)\b.*\bengineer\b'
+    - '\bengineer\b.*\b(backend|back-end|platform|infrastructure|infra|systems|distributed)\b'
+    - '\bsde\b'
+    - '\bsde\s*-?\s*(i{1,3}|[123])\b'
+    - 'software development engineer'
+    - 'software engineer'
+    - 'software developer'
+
+    # .NET / C# roles
+    - '\b(dotnet|\.net|c#|csharp|asp\.net|aspnet)\b.*\b(engineer|developer|architect|specialist)\b'
+    - '\b(engineer|developer|specialist)\b.*\b(dotnet|\.net|c#|csharp|asp\.net|aspnet)\b'
+    - '\b\.net\s+(core\s+)?developer\b'
+    - '\b\.net\s+(core\s+)?engineer\b'
+
+    # Combined .NET / C# + GenAI / LLM / RAG roles
+    - '\b(dotnet|\.net|c#)\b.*\b(ai|genai|generative ai|llm|rag|agentic)\b'
+    - '\b(ai|genai|generative ai|llm|rag|agentic)\b.*\b(dotnet|\.net|c#)\b'
+    - '\b(dotnet|\.net|c#)\b.*\b(ai|genai|llm|rag)\b.*\b(engineer|developer)\b'
+    - '\b(ai|genai|llm|rag)\b.*\b(dotnet|\.net|c#)\b.*\b(engineer|developer)\b'
+
+    # GenAI / LLM / RAG standalone engineering roles
+    - '\b(ai|artificial intelligence)\b.*\b(engineer|developer)\b'
+    - '\b(genai|generative ai)\b.*\b(engineer|developer)\b'
+    - '\b(llm|rag|agentic ai)\b.*\b(engineer|developer)\b'
+    - '\b(engineer|developer)\b.*\b(genai|generative ai|llm|rag)\b'
+
+    # Full-stack roles
+    - '\bfull[\s-]?stack\b.*\b(engineer|developer)\b'
+    - '\b(engineer|developer)\b.*\bfull[\s-]?stack\b'
+
+    # API / backend roles
+    - '\b(api|application)\b.*\b(engineer|developer)\b'
+    - '\b(engineer|developer)\b.*\b(api|application)\b'
+
+    - 'site reliability engineer'
+    - '\bsre\b'
+    - 'member of technical staff'
+
+  exclude_titles:
+    - '\b(staff|principal|distinguished|fellow|architect)\b'
+    - '\bsenior\b'
+    - '\b(director|vp|vice president|head of|chief|cto)\b'
+    - '\b(manager|management)\b'
+    - '\b(intern|internship|apprentice|trainee)\b'
+    - '\b(sales|account executive|marketing|recruit|support|success)\b'
+    - '\b(frontend|front-end|ios|android|mobile|game|designer)\b'
+    - '\b(data scientist|machine learning scientist|research scientist)\b'
+
+    # Removed C++ / kernel / networking exclusions because they aren't
+    # relevant to the resume-based target profile.
+
+  locations:
+    - bangalore
+    - bengaluru
+    - india
+    - hyderabad
+    - noida
+    - gurgaon
+    - gurugram
+    - bhubaneswar
+    - pune
+    - nagpur
+    
+  allow_remote: true
+
+  # Timeline & Applicant threshold (change anytime)
+  max_age_days: 1          # 1 = last 24 hours, 2 = last 48 hours, 7 = last week, etc.
+  max_applicants: 100      # maximum applicants allowed (e.g. 100). Jobs with more will be dropped.
+
+# --- LLM stages -------------------------------------------------------------
+
+screen_batch_size: 8
+screen_jd_chars: 1400
+draft_jd_chars: 6000
+score_threshold: 7.0
+# Set max_per_digest to 0 or null to send ALL jobs that cross score_threshold (no cap)
+max_per_digest: 0
+
+# --- paths ------------------------------------------------------------------
+
+companies_file: companies.yaml
+profile_file: profile.json
+seen_file: seen.json
+digest_file: out/digest.html
+tracker_csv: out/tracker.csv

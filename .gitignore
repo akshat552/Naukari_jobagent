@@ -1,0 +1,41 @@
+# secrets & credentials
+.env
+*.pem
+*.key
+
+# personal resume & extracted profile
+resume.*
+*.pdf
+profile.json
+!profile.example.json
+
+# generated output
+out/
+*.html
+!jobhunt/templates/*.html
+tracker.csv
+*.csv
+
+# dedupe index
+seen.json
+
+# python & test caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# browser profiles & temp files
+chrome-naukri-profile/
+.playwright/
+
+# editors & os
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
