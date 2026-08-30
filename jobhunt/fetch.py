@@ -340,7 +340,6 @@ def fetch_naukri_cdp(query: str = "dot-net-developer", job_age: int = 1, experie
     ensure_chrome_running(port)
 
     jobs = []
-    seen_ids = set()
     try:
         with sync_playwright() as p:
             try:
@@ -353,65 +352,48 @@ def fetch_naukri_cdp(query: str = "dot-net-developer", job_age: int = 1, experie
             page = context.new_page()
 
             clean_query = query.strip().replace(" ", "-")
-            raw_k = query.strip().replace("-", " ")
-            encoded_k = requests.utils.quote(raw_k)
+            url = f"https://www.naukri.com/{clean_query}-jobs?jobAge={job_age}&experience={experience}"
+            page.goto(url, wait_until="domcontentloaded", timeout=25000)
+            time.sleep(3)
 
-            for pg in range(1, pages + 1):
-                if pg == 1:
-                    url = f"https://www.naukri.com/jobs-in-india?k={encoded_k}&jobAge={job_age}&experience={experience}"
-                else:
-                    url = f"https://www.naukri.com/jobs-in-india-{pg}?k={encoded_k}&jobAge={job_age}&experience={experience}"
+            cards = page.query_selector_all(".srp-jobtuple-wrapper, .cust-job-tuple, article")
+            for card in cards:
+                title_el = card.query_selector("a.title")
+                if not title_el:
+                    continue
+                title = title_el.inner_text().strip()
+                url_raw = title_el.get_attribute("href") or ""
+                url_clean = url_raw.split("?")[0] if url_raw else ""
 
-                page.goto(url, wait_until="domcontentloaded", timeout=20000)
-                try:
-                    page.wait_for_selector(".srp-jobtuple-wrapper, .cust-job-tuple, article", state="attached", timeout=4000)
-                except Exception:
-                    pass
+                comp_el = card.query_selector("a.comp-name, .comp-name")
+                comp = comp_el.inner_text().strip() if comp_el else "Naukri Employer"
 
-                cards = page.query_selector_all(".srp-jobtuple-wrapper, .cust-job-tuple, article")
-                if not cards:
-                    break
+                loc_el = card.query_selector(".loc-wrap, .locWdth, .location")
+                loc = loc_el.inner_text().strip() if loc_el else ""
 
-                for card in cards:
-                    title_el = card.query_selector("a.title")
-                    if not title_el:
-                        continue
-                    title = title_el.inner_text().strip()
-                    url_raw = title_el.get_attribute("href") or ""
-                    url_clean = url_raw.split("?")[0] if url_raw else ""
+                desc_el = card.query_selector(".job-desc, .row6")
+                desc = desc_el.inner_text().strip() if desc_el else f"{title} at {comp}"
 
-                    comp_el = card.query_selector("a.comp-name, .comp-name")
-                    comp = comp_el.inner_text().strip() if comp_el else "Naukri Employer"
+                card_text = card.inner_text()
+                app_m = re.search(r'(\d+)\s+Applicants|Over\s+100\s+Applicants', card_text, flags=re.I)
+                apps = int(app_m.group(1)) if (app_m and app_m.group(1)) else (101 if (app_m and "over 100" in app_m.group(0).lower()) else None)
 
-                    loc_el = card.query_selector(".loc-wrap, .locWdth, .location")
-                    loc = loc_el.inner_text().strip() if loc_el else ""
+                job_id_val = str(abs(hash(url_clean or title)))
+                job_id_m = re.search(r'-(\d{5,})\?', card_text)
+                if job_id_m:
+                    job_id_val = job_id_m.group(1)
 
-                    desc_el = card.query_selector(".job-desc, .row6")
-                    desc = desc_el.inner_text().strip() if desc_el else f"{title} at {comp}"
-
-                    card_text = card.inner_text()
-                    app_m = re.search(r'(\d+)\s+Applicants|Over\s+100\s+Applicants', card_text, flags=re.I)
-                    apps = int(app_m.group(1)) if (app_m and app_m.group(1)) else (101 if (app_m and "over 100" in app_m.group(0).lower()) else None)
-
-                    job_id_val = str(abs(hash(url_clean or title)))
-                    job_id_m = re.search(r'-(\d{5,})\?', card_text)
-                    if job_id_m:
-                        job_id_val = job_id_m.group(1)
-
-                    full_id = f"naukri:{clean_query}:{job_id_val}"
-                    if full_id not in seen_ids:
-                        seen_ids.add(full_id)
-                        jobs.append(Job(
-                            job_id=full_id,
-                            ats="naukri",
-                            company=comp,
-                            title=title,
-                            location=loc,
-                            url=url_clean,
-                            description=desc,
-                            posted_at=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-                            applicants=apps,
-                        ))
+                jobs.append(Job(
+                    job_id=f"naukri:{clean_query}:{job_id_val}",
+                    ats="naukri",
+                    company=comp,
+                    title=title,
+                    location=loc,
+                    url=url_clean,
+                    description=desc,
+                    posted_at=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                    applicants=apps,
+                ))
             page.close()
     except Exception as e:
         print(f"  ! naukri -> CDP fetch failed ({type(e).__name__}: {e})")
@@ -593,8 +575,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             job_age = kwargs.get("job_age") or 1
             experience = kwargs.get("experience") or 3
             port = kwargs.get("port") or 9222
-            pages = int(kwargs.get("pages") or 2)
-            naukri_jobs = fetch_naukri_cdp(query=query, job_age=job_age, experience=experience, pages=pages, port=port)
+            naukri_jobs = fetch_naukri_cdp(query=query, job_age=job_age, experience=experience, port=port)
             return naukri_jobs, "naukri-cdp"
 
         elif ats in ("custom", "direct"):
