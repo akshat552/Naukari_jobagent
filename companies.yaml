@@ -29,6 +29,10 @@ companies:
   - {ats: naukri, slug: nk-fullstack, query: "full-stack-dot-net-developer", job_age: 1, experience: 3, name: "Naukri Full Stack .NET (3+ yrs)"}
   - {ats: naukri, slug: nk-aspnetcore, query: "asp-net-core-developer", job_age: 1, experience: 3, name: "Naukri ASP.NET Core (3+ yrs)"}
   - {ats: naukri, slug: nk-dotnetazure, query: "dot-net-azure-developer", job_age: 1, experience: 3, name: "Naukri .NET + Azure (3+ yrs)"}
+  - {ats: naukri, slug: nk-net, query: "net", job_age: 1, experience: 3, name: "Naukri Net (3+ yrs)"}
+  - {ats: naukri, slug: nk-dotnet-fullstack, query: "dot-net-fullstack-developer", job_age: 1, experience: 3, name: "Naukri Dot Net Fullstack (3+ yrs)"}
+  - {ats: naukri, slug: nk-dotnet-only, query: "dotnet-developer", job_age: 1, experience: 3, name: "Naukri Dotnet Developer (3+ yrs)"}
+  - {ats: naukri, slug: nk-csharp-only, query: "c-sharp", job_age: 1, experience: 3, name: "Naukri C# (3+ yrs)"}
 
   # ============================================================================
   # Target Companies (Specific Search Streams)
