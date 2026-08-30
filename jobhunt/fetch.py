@@ -444,8 +444,8 @@ def fetch_linkedin_cdp(slug: str, company: str, query: str = "", location: str =
 
             search_query = query or f"{company} developer"
             encoded_q = requests.utils.quote(search_query)
-            # Use exact parameters from user's reference URL + past hour
-            url = f"https://www.linkedin.com/jobs/search/?keywords={encoded_q}&geoId=102713980&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD"
+            encoded_loc = requests.utils.quote(location)
+            url = f"https://www.linkedin.com/jobs/search/?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD"
 
             page.goto(url, wait_until="domcontentloaded", timeout=25000)
             time.sleep(3)
@@ -593,8 +593,7 @@ def fetch_board(ats: str, slug: str, company: str | None = None,
             # 1. Fast HTTP API Check
             for p in range(pages):
                 start = p * 10
-                # Use exact parameters from user's reference URL + past hour
-                url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&geoId=102713980&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD&start={start}"
+                url = f"https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={encoded_q}&location={encoded_loc}&f_TPR=r3600&f_SAL=f_SA_id_227001%3A276001%2C277001%24f_SA_id_226001%3A272015&sortBy=DD&start={start}"
                 r = sess.get(url, headers={**UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=TIMEOUT)
                 if r.status_code == 200:
                     page_jobs = parse_linkedin(slug, comp_name, r.text)
